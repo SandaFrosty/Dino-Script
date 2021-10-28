@@ -1,6 +1,5 @@
 -- UI Library Credits to Sanda#9197
 -- Script By Sanda#9197
--- don't steal credits
 
 do
     if game:GetService("CoreGui"):FindFirstChild("DINOHUB") then
@@ -925,7 +924,7 @@ end
 
 
 -- script begin --
-local DinoWindow = Dino:CreateWindow("Build A Boat For Treasure")
+local DinoWindow = Dino:CreateWindow("Build A Boat For Treasure by [Sanda#9197]")
 
 -- Farming
 local Farming = DinoWindow:NewPage("Farming")
