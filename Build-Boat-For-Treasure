@@ -1331,5 +1331,14 @@ PlayerSection:CreateToggle("Noclip", function(State)
     end
 end)
 
+PlayerSection:CreateButton("No Water Damage", function()
+    do
+        if game.Players.LocalPlayer.Character:FindFirstChild("WaterDetector") then
+            game.Players.LocalPlayer.Character:WaitForChild("WaterDetector"):Destroy()
+        end
+    end
+end)
+
+
 
 return Dino
