@@ -14,6 +14,7 @@ local OPENCLOSE = Instance.new("TextButton")
 DINOHUB.Name = "DINOHUB"
 DINOHUB.Parent = game.CoreGui
 DINOHUB.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+DINOHUB.ResetOnSpawn = false
 
 OPENCLOSE.Name = "OPENCLOSE"
 OPENCLOSE.Parent = DINOHUB
@@ -54,6 +55,7 @@ function Dino:CreateWindow(dinotitle)
     DinoUI.Name = "DinoUI"
     DinoUI.Parent = game.CoreGui
     DinoUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    DinoUI.ResetOnSpawn = false
     
     Window.Name = "Window"
     Window.Parent = DinoUI
