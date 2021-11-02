@@ -1265,4 +1265,9 @@ PlayerSection:CreateButton("No Water Damage", function()
     end
 end)
 
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+    game:GetService("VirtualUser"):CaptureController()
+    game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+end)
+
 return Dino
