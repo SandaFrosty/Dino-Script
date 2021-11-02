@@ -950,7 +950,7 @@ FarmingSection:CreateToggle("Tween AutoFarm (Might Have Bug)", function(State)
             if game.Players.LocalPlayer.Character.Humanoid.Health >= 0 and playergood then
                 GoEnd()
                 playergood = false
-                charf = game.Players.LocalPlayer.CharacterAdded:Connect(function()
+                game.Players.LocalPlayer.CharacterAdded:Connect(function()
                     playergood = true
                 end)
             end
@@ -959,47 +959,7 @@ FarmingSection:CreateToggle("Tween AutoFarm (Might Have Bug)", function(State)
 end)
 
 FarmingSection:CreateButton("Tween Farm (ONCE)", function()
-    local AutoFarmTweenInfo1 = TweenInfo.new(
-        2, -- Time
-        Enum.EasingStyle.Linear, -- EasingStyle
-        Enum.EasingDirection.Out, -- EasingDirection
-        0, -- RepeatCount (when less than zero the tween will loop indefinitely)
-        false, -- Reverses (tween will reverse once reaching it's goal)
-        0 -- DelayTime
-    )
-    local AutoFarmt1 = game.TweenService:Create(game.Players.LocalPlayer.Character.PrimaryPart, AutoFarmTweenInfo1, {CFrame = CFrame.new(
-        56, 17,  935
-    )})
-    game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false 
-    AutoFarmt1:Play()
-    wait(2)
-    local AutoFarmTweenInfo2 = TweenInfo.new(
-        18, -- Time
-        Enum.EasingStyle.Linear, -- EasingStyle
-        Enum.EasingDirection.Out, -- EasingDirection
-        0, -- RepeatCount (when less than zero the tween will loop indefinitely)
-        false, -- Reverses (tween will reverse once reaching it's goal)
-        0 -- DelayTime
-    )
-    local AutoFarmt2 = game.TweenService:Create(game.Players.LocalPlayer.Character.PrimaryPart, AutoFarmTweenInfo2, {CFrame = CFrame.new(
-        -65, 85,8694
-    )})
-    game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false 
-    AutoFarmt2:Play()
-    wait(18)
-    local AutoFarmTweenInfoend = TweenInfo.new(
-        3, -- Time
-        Enum.EasingStyle.Linear, -- EasingStyle
-        Enum.EasingDirection.Out, -- EasingDirection
-        0, -- RepeatCount (when less than zero the tween will loop indefinitely)
-        false, -- Reverses (tween will reverse once reaching it's goal)
-        0 -- DelayTime
-    )
-    local AutoFarmtEnd = game.TweenService:Create(game.Players.LocalPlayer.Character.PrimaryPart, AutoFarmTweenInfoend, {CFrame = CFrame.new(
-        -54, -354, 9491
-    )})
-    game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false 
-    AutoFarmtEnd:Play()
+    GoEnd()
 end)
 
 FarmingSection:CreateButton("Fast Farm (ONCE)", function()
