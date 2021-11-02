@@ -933,104 +933,28 @@ local Farming = DinoWindow:NewPage("Farming")
 local FarmingSection = Farming:NewSection("Farm")
 
 
-playerpsawned = true
+local function GoEnd()
+    game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.PrimaryPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),{CFrame = CFrame.new(56, 17, 935)}):Play()
+    wait(2)
+    game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.PrimaryPart, TweenInfo.new(20, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),{CFrame = CFrame.new(-65, 85, 8694)}):Play()
+    wait(20)
+    game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.PrimaryPart, TweenInfo.new(5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),{CFrame = CFrame.new(-54, -354, 9491)}):Play()
+    wait(5)
+end
+
+local playergood = true
 FarmingSection:CreateToggle("Tween AutoFarm (Might Have Bug)", function(State)
-    if State then
-        FcnautoFarm = game.Players.LocalPlayer.CharacterAdded:Connect(function()
-            wait(1)
-            local AutoSpawnfunctionTweenInfoFarm1 = TweenInfo.new(
-                2, -- Time
-                Enum.EasingStyle.Linear, -- EasingStyle
-                Enum.EasingDirection.Out, -- EasingDirection
-                0, -- RepeatCount (when less than zero the tween will loop indefinitely)
-                false, -- Reverses (tween will reverse once reaching it's goal)
-                0 -- DelayTime
-            )
-            local AutoSpawnfunctionTweenFarm1 = game.TweenService:Create(game.Players.LocalPlayer.Character.PrimaryPart, AutoSpawnfunctionTweenInfoFarm1, {CFrame = CFrame.new(
-                56, 17,  935
-            )})
-            game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false 
-            AutoSpawnfunctionTweenFarm1:Play()
-            wait(2)
-            local AutoSpawnfunctionTweenInfoFarm2 = TweenInfo.new(
-                18, -- Time
-                Enum.EasingStyle.Linear, -- EasingStyle
-                Enum.EasingDirection.Out, -- EasingDirection
-                0, -- RepeatCount (when less than zero the tween will loop indefinitely)
-                false, -- Reverses (tween will reverse once reaching it's goal)
-                0 -- DelayTime
-            )
-            local AutoSpawnfunctionTweenFarm2 = game.TweenService:Create(game.Players.LocalPlayer.Character.PrimaryPart, AutoSpawnfunctionTweenInfoFarm2, {CFrame = CFrame.new(
-                -65, 85,8694
-            )})
-            game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false 
-            AutoSpawnfunctionTweenFarm2:Play()
-            wait(18)
-            local AutoSpawnfunctionTweenInfoFarm3 = TweenInfo.new(
-                3, -- Time
-                Enum.EasingStyle.Linear, -- EasingStyle
-                Enum.EasingDirection.Out, -- EasingDirection
-                0, -- RepeatCount (when less than zero the tween will loop indefinitely)
-                false, -- Reverses (tween will reverse once reaching it's goal)
-                0 -- DelayTime
-            )
-            local AutoSpawnfunctionTweenFarmEnd = game.TweenService:Create(game.Players.LocalPlayer.Character.PrimaryPart, AutoSpawnfunctionTweenInfoFarm3, {CFrame = CFrame.new(
-                -54, -354, 9491
-            )})
-            game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false 
-            AutoSpawnfunctionTweenFarmEnd:Play()
-
+    _G.AutoTweenFarm = State
+    while _G.AutoTweenFarm do wait()
+        pcall(function()
+            if game.Players.LocalPlayer.Character.Humanoid.Health >= 0 and playergood then
+                GoEnd()
+                playergood = false
+                charf = game.Players.LocalPlayer.CharacterAdded:Connect(function()
+                    playergood = true
+                end)
+            end
         end)
-
-
-
-
-
-
-
-        local AutoFarmTweenInfo1 = TweenInfo.new(
-            2, -- Time
-            Enum.EasingStyle.Linear, -- EasingStyle
-            Enum.EasingDirection.Out, -- EasingDirection
-            0, -- RepeatCount (when less than zero the tween will loop indefinitely)
-            false, -- Reverses (tween will reverse once reaching it's goal)
-            0 -- DelayTime
-        )
-        local AutoFarmt1 = game.TweenService:Create(game.Players.LocalPlayer.Character.PrimaryPart, AutoFarmTweenInfo1, {CFrame = CFrame.new(
-            56, 17,  935
-        )})
-        game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false 
-        AutoFarmt1:Play()
-        wait(2)
-        local AutoFarmTweenInfo2 = TweenInfo.new(
-            18, -- Time
-            Enum.EasingStyle.Linear, -- EasingStyle
-            Enum.EasingDirection.Out, -- EasingDirection
-            0, -- RepeatCount (when less than zero the tween will loop indefinitely)
-            false, -- Reverses (tween will reverse once reaching it's goal)
-            0 -- DelayTime
-        )
-        local AutoFarmt2 = game.TweenService:Create(game.Players.LocalPlayer.Character.PrimaryPart, AutoFarmTweenInfo2, {CFrame = CFrame.new(
-            -65, 85,8694
-        )})
-        game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false 
-        AutoFarmt2:Play()
-        wait(18)
-        local AutoFarmTweenInfoend = TweenInfo.new(
-            3, -- Time
-            Enum.EasingStyle.Linear, -- EasingStyle
-            Enum.EasingDirection.Out, -- EasingDirection
-            0, -- RepeatCount (when less than zero the tween will loop indefinitely)
-            false, -- Reverses (tween will reverse once reaching it's goal)
-            0 -- DelayTime
-        )
-        local AutoFarmtEnd = game.TweenService:Create(game.Players.LocalPlayer.Character.PrimaryPart, AutoFarmTweenInfoend, {CFrame = CFrame.new(
-            -54, -354, 9491
-        )})
-        game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false 
-        AutoFarmtEnd:Play()
-    else
-        FcnautoFarm:Disconnect()
     end
 end)
 
@@ -1340,7 +1264,5 @@ PlayerSection:CreateButton("No Water Damage", function()
         end
     end
 end)
-
-
 
 return Dino
