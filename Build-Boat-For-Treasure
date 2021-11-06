@@ -941,6 +941,14 @@ local function GoEnd()
     game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.PrimaryPart, TweenInfo.new(5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),{CFrame = CFrame.new(-54, -354, 9491)}):Play()
     wait(5)
 end
+local function GoEndFast()
+    game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.PrimaryPart, TweenInfo.new(0.08, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),{CFrame = CFrame.new(56, 17, 935)}):Play()
+    wait(0.08)
+    game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.PrimaryPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),{CFrame = CFrame.new(-65, 85, 8694)}):Play()
+    wait(2)
+    game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.PrimaryPart, TweenInfo.new(0.04, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),{CFrame = CFrame.new(-54, -354, 9491)}):Play()
+    wait(0.04)
+end
 
 local playergood = true
 FarmingSection:CreateToggle("Tween AutoFarm (Might Have Bug)", function(State)
@@ -948,8 +956,8 @@ FarmingSection:CreateToggle("Tween AutoFarm (Might Have Bug)", function(State)
     while _G.AutoTweenFarm do wait()
         pcall(function()
             if game.Players.LocalPlayer.Character.Humanoid.Health >= 0 and playergood then
-                GoEnd()
                 playergood = false
+                GoEnd()
                 game.Players.LocalPlayer.CharacterAdded:Connect(function()
                     playergood = true
                 end)
@@ -1012,50 +1020,8 @@ end)
 
 FarmingSection:CreateButton("Fast Tween Farm (ONCE)", function()
     for i=1,5 do
-        local x = 50
-        local y = 50
-        local waittime = 0.09
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,1360)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,1606)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,2110)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,2356)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,2860)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,3610)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,3856)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,4360)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,4606)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,5111)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,5356)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,5860)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,6106)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,6610)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,6857)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,7360)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,7606)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,8110)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,8356)
-        wait(waittime)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-60,-250,9523)
-        wait(waittime*7)
-        end
+        GoEndFast()
+    end
 end)
 
 
